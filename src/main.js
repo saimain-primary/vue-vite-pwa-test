@@ -34,10 +34,9 @@ window.addEventListener("beforeinstallprompt", (e) => {
   deferredPrompt = e;
   // Update UI notify the user they can install the PWA
   //   showInstallPromotion();
-  alert("install pwa please");
+  // alert("install pwa please");
 });
 
-console.log(deferredPrompt);
 
 const app = createApp(App);
 
