@@ -5,7 +5,11 @@
 
       <div class="text-body-2 font-weight-light mb-n1">Welcome to</div>
 
-      <h1 class="text-h2 font-weight-bold">PWA Test 2222</h1>
+      <h1 class="text-h2 font-weight-bold">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. A repellendus
+        nostrum quibusdam. Nesciunt natus repellendus alias adipisci odio rem
+        omnis saepe eum tenetur, illo iste, quia, excepturi dolor quis vitae.
+      </h1>
 
       <div class="py-14" />
 
