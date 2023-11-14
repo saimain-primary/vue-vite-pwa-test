@@ -1,21 +1,28 @@
 <template>
   <v-app>
     <!-- Your app's main content goes here -->
-    <router-view/>
+    <router-view />
     <!-- PWA Install Prompt Component -->
     <install-promotion
       v-if="showInstallPrompt"
       @install="installPWA"
     ></install-promotion>
+
+    <!-- Update Button -->
+    <v-btn v-if="updateAvailable" @click="updateApp">
+      Update Available - Click to Refresh
+    </v-btn>
   </v-app>
 </template>
 
 <script setup>
 import { ref, onMounted } from "vue";
 import InstallPromotion from "./components/InstallPromotion.vue";
+import { registerSW } from "virtual:pwa-register";
 
 // State for showing or hiding the install prompt
 const showInstallPrompt = ref(false);
+const updateAvailable = ref(false);
 
 // This variable will hold the event from 'beforeinstallprompt'
 let deferredPrompt;
@@ -36,6 +43,19 @@ onMounted(() => {
     // Hide our install prompt UI as the app is already installed
     showInstallPrompt.value = false;
   });
+
+  const updateSW = registerSW({
+    onNeedRefresh() {
+      updateAvailable.value = true;
+    },
+    onOfflineReady() {
+      // Inform users the app can work offline (optional)
+    },
+  });
+
+  const updateApp = () => {
+    updateSW();
+  };
 });
 
 // Function to handle the installation process
